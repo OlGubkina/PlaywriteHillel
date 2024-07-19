@@ -17,17 +17,19 @@ const config = defineConfig({
   // true -> несколько воркеров выполняют один тестовый файл
   // false -> 1 worker - 1 testfile
 
-  forbidOnly: !!process.env.CI, //не пропускает тесты с .only
+  forbidOnly: !!process.env.CI, //не пропускает тесты с .only на pipeline, локально разрешено
+  //forbidOnly: true //запрещает использовать .only
 
-  retries: process.env.CI ? 1 : 0,
+  retries: 1, // локально
+  //retries: process.env.CI ? 1 : 0,
 
-  workers: 3,
+  workers: 3, // локально
 
   reporter: 'html',
 
   use: {
-    //headless: true, // pipeline
-    headless: false,  // debug - open in Browser
+    //headless: true, // for pipeline
+    headless: false,  // for debug - open in Browser
 
     baseURL: 'https://qauto.forstudy.space/',
     httpCredentials: {
@@ -40,8 +42,13 @@ const config = defineConfig({
       height: 920,
     },
 
-    trace: 'retain-on-failure',
-    screenshot: 'only-on-failure'
+    // Для репортинга:
+    trace: "on", // шаги, запросы, хуки - на этапе дебага ON
+    video: "on",
+    screenshot: "on"
+
+    //trace: 'retain-on-failure',
+    //screenshot: 'only-on-failure'
   },
 
   projects: [ // = Browsers
@@ -51,14 +58,24 @@ const config = defineConfig({
     },
 
     {
+      name: 'smoke',
+      use: {
+        ...devices['Desktop Chrome'],
+        grep: /@smoke/, // tag for smoke TCs
+        // npx playwright test --project=smoke
+      },
+    },
+
+    {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-      //grep: /@smoke/, // tag для кейсов
+      use: {
+        ...devices['Desktop Chrome'],
+      },
     },
     // {
     //   name: 'env1',
     //   use: { ...devices['Desktop Chrome'] },
-    //   baseURL: 'https://qauto.forstudy.space/',
+    //   baseURL: 'https://qauto.forstudy.space/', // npx playwright test --project=env1
     //   dependencies: ['setup:stage'],
     // },
     // {
