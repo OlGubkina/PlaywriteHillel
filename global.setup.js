@@ -1,1 +1,3 @@
-console.log('Global setup');
+export default function () {
+    console.log('GLOBAL SETUP');
+}

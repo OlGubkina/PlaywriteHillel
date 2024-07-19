@@ -1,1 +1,3 @@
-console.log('GLOBAL TEARDOWN');
+export default function () {
+    console.log('GLOBAL TEARDOWN');
+}

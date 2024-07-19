@@ -53,30 +53,45 @@ const config = defineConfig({
 
   projects: [ // = Browsers
     {
-      name: "setup",
-      testMatch: "tests/setup/**/*.setup.js"
-    },
-
-    {
-      name: 'smoke',
-      use: {
-        ...devices['Desktop Chrome'],
-        grep: /@smoke/, // tag for smoke TCs
-        // npx playwright test --project=smoke
-      },
-    },
-
-    {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
       },
     },
+
+
+    // {
+    //   name: "setup:stage",
+    //   testMatch: "tests/setup/**/*.setup.js"
+    // },
+    // {
+    //   name: "teardown:stage",
+    //   testMatch: "tests/teardown/**/*.teardown.js"
+    // },
+    // {
+    //   name: "stage",
+    //   use: {
+    //     ...devices['Desktop Chrome'],
+    //   },
+    //   dependencies: ['setup:stage'],
+    //   teardown: 'teardown:stage',
+    // },
+    //
+    // {
+    //   name: 'smoke',
+    //   use: {
+    //     ...devices['Desktop Chrome'],
+    //     grep: /@smoke/, // tag for smoke TCs
+    //     // npx playwright test --project=smoke
+    //   },
+    // },
+
+
     // {
     //   name: 'env1',
     //   use: { ...devices['Desktop Chrome'] },
     //   baseURL: 'https://qauto.forstudy.space/', // npx playwright test --project=env1
-    //   dependencies: ['setup:stage'],
+    //   dependencies: ['setup:env1'],
     // },
     // {
     //   name: 'env2',

@@ -5,6 +5,8 @@
 
   "scripts": {
     "test": "npx playwright test",
+    "comment": "Some text",
+    "test:ui": "npx playwright test --ui",
     "report": "npx playwright show-report"
   },
 
