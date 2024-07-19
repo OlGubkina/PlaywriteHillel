@@ -37,3 +37,6 @@ test.describe("Test Suite", ()=>{
 /**
  Flacky - тест, который прошёл не с первого раза
  */
+
+// PW inspector
+// await page.pause() в кейсе + headless = false

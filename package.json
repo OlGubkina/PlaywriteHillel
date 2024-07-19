@@ -5,8 +5,10 @@
 
   "scripts": {
     "test": "npx playwright test",
-    "comment": "Some text",
+
+    "comment": "Start TCs using UI:",
     "test:ui": "npx playwright test --ui",
+
     "report": "npx playwright show-report"
   },
 
