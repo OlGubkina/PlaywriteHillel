@@ -1,17 +1,14 @@
 import {expect, test} from "@playwright/test"
 
 test.describe("Home work locators", () => {
-    test.beforeEach(async () => {
+    test.beforeEach(async ({page}) => {
+        await page.goto("/")
+        const signUpBtn = page.locator(".hero-descriptor_btn")
+        await signUpBtn.click()
     })
 
     test.describe("Name field TCs", () => {
         test("Name field > Name is correct", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const nameInput = form.locator('#signupName')
 
@@ -23,12 +20,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Name field > Name is correct: long min = 2 symbols", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const nameInput = form.locator('#signupName')
 
@@ -40,12 +31,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Name field > Name is correct: long max = 20 symbols", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const nameInput = form.locator('#signupName')
 
@@ -57,12 +42,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Name field > Empty field", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const nameInput = form.locator('#signupName')
 
@@ -78,12 +57,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Name field > Name is invalid: Numbers", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const nameInput = form.locator('#signupName')
 
@@ -99,12 +72,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Name field > Name is invalid: Space", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const nameInput = form.locator('#signupName')
 
@@ -120,12 +87,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Name field > Name long: too short", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const nameInput = form.locator('#signupName')
 
@@ -141,12 +102,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Name field > Name long: too long", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const nameInput = form.locator('#signupName')
 
@@ -164,12 +119,6 @@ test.describe("Home work locators", () => {
 
     test.describe("Last name field TCs", () => {
         test("LastName field > Empty field", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const lastNameInput = form.locator('#signupLastName')
 
@@ -185,12 +134,6 @@ test.describe("Home work locators", () => {
         })
 
         test("LastName field > LastName is invalid: Numbers", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const lastNameInput = form.locator('#signupLastName')
 
@@ -206,12 +149,6 @@ test.describe("Home work locators", () => {
         })
 
         test("LastName field > LastName is invalid: Space", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const lastNameInput = form.locator('#signupLastName')
 
@@ -227,12 +164,6 @@ test.describe("Home work locators", () => {
         })
 
         test("LastName field > LastName long: too short", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const lastNameInput = form.locator('#signupLastName')
 
@@ -248,12 +179,6 @@ test.describe("Home work locators", () => {
         })
 
         test("LastName field > LastName long: too long", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const lastNameInput = form.locator('#signupLastName')
 
@@ -269,12 +194,6 @@ test.describe("Home work locators", () => {
         })
 
         test("LastName field > LastName long min = 2 symbols", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const lastNameInput = form.locator('#signupLastName')
 
@@ -286,12 +205,6 @@ test.describe("Home work locators", () => {
         })
 
         test("LastName field > Name long max = 20 symbols", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const lastNameInput = form.locator('#signupLastName')
 
@@ -305,12 +218,6 @@ test.describe("Home work locators", () => {
 
     test.describe("Email field TCs", () => {
         test("Email field > Email is correct", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const emailInput = form.locator('#signupEmail')
 
@@ -322,12 +229,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Email field > Empty field", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const emailInput = form.locator('#signupEmail')
 
@@ -343,12 +244,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Email field > Email is incorrect", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const emailInput = form.locator('#signupEmail')
 
@@ -366,12 +261,6 @@ test.describe("Home work locators", () => {
 
     test.describe("Password field TCs", () => {
         test("Password field > Password is correct", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const PasswordInput = form.locator('#signupPassword')
 
@@ -383,12 +272,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Password field > Empty Password", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const PasswordInput = form.locator('#signupPassword')
 
@@ -404,12 +287,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Password field > Incorrect password: < 8 symbols", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const PasswordInput = form.locator('#signupPassword')
 
@@ -425,12 +302,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Password field > Incorrect password: > 15 symbols", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const PasswordInput = form.locator('#signupPassword')
 
@@ -443,18 +314,11 @@ test.describe("Home work locators", () => {
 
             const registerBtn = page.locator(".modal-footer > .btn")
             await expect(registerBtn).toBeDisabled()
-
         })
     })
 
     test.describe("Re-enter Password field TCs", () => {
         test("Re-enter Password > Password = Re-enter Password", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const PasswordInput = form.locator('#signupPassword')
             const RepeatPasswordInput = form.locator('#signupRepeatPassword')
@@ -468,12 +332,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Re-enter Password > Password != Re-enter Password", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const PasswordInput = form.locator('#signupPassword')
             const RepeatPasswordInput = form.locator('#signupRepeatPassword')
@@ -491,12 +349,6 @@ test.describe("Home work locators", () => {
         })
 
         test("Re-enter Password > Empty RepeatPassword", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             const form = page.locator('app-signup-modal form')
             const RepeatPasswordInput = form.locator('#signupRepeatPassword')
 
@@ -514,12 +366,6 @@ test.describe("Home work locators", () => {
 
     test.describe("Button Register", () => {
         test("Fill the form", async ({page}) => {
-            // Открыть форму регистрации нового пользователя
-            await page.goto("/")
-            const signUpBtn = page.locator(".hero-descriptor_btn")
-            await signUpBtn.click()
-            // Как эти три строки можно вынести в beforeEach? Почему ругается на /
-
             // Reg form locators:
             const form = page.locator('app-signup-modal form')
             const nameInput = form.locator('#signupName')
