@@ -15,18 +15,22 @@ test.describe("Home work locators", () => {
             await nameInput.fill("Olga")
             await nameInput.blur()
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
         test("Name field > Name is correct: long min = 2 symbols", async ({page}) => {
-            const form = page.locator('app-signup-modal form')
-            const nameInput = form.locator('#signupName')
+            //const form = page.locator('app-signup-modal form')
+            //?const form = page.locator('.modal-body')
+            //const nameInput = form.locator('#signupName')
+            const nameInput = page.locator('#signupName')
 
             await nameInput.fill("Aa")
             await nameInput.blur()
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            await page.pause()
+
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -37,7 +41,7 @@ test.describe("Home work locators", () => {
             await nameInput.fill("Aaaaaaaaaaaaaaaaaaaa")
             await nameInput.blur()
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -52,7 +56,7 @@ test.describe("Home work locators", () => {
             await expect(inputNameTip).toContainText('Name required')
             await expect(nameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -63,11 +67,11 @@ test.describe("Home work locators", () => {
             await nameInput.fill("111")
             await nameInput.blur()
 
-            const inputNameTip1 = page.locator('.invalid-feedback > :nth-child(1)')
-            await expect(inputNameTip1).toContainText('Name is invalid')
+            const inputNameTip = page.locator('.invalid-feedback > :nth-child(1)')
+            await expect(inputNameTip).toContainText('Name is invalid')
             await expect(nameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -78,11 +82,11 @@ test.describe("Home work locators", () => {
             await nameInput.fill("Anna Maria")
             await nameInput.blur()
 
-            const inputNameTip1 = page.locator('.invalid-feedback > :nth-child(1)')
-            await expect(inputNameTip1).toContainText('Name is invalid')
+            const inputNameTip = page.locator('.invalid-feedback > :nth-child(1)')
+            await expect(inputNameTip).toContainText('Name is invalid')
             await expect(nameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -93,11 +97,11 @@ test.describe("Home work locators", () => {
             await nameInput.fill("A")
             await nameInput.blur()
 
-            const inputNameTip1 = page.locator('.invalid-feedback > :nth-child(1)')
-            await expect(inputNameTip1).toContainText('Name has to be from 2 to 20 characters long')
+            const inputNameTip = page.locator('.invalid-feedback > :nth-child(1)')
+            await expect(inputNameTip).toContainText('Name has to be from 2 to 20 characters long')
             await expect(nameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -108,11 +112,11 @@ test.describe("Home work locators", () => {
             await nameInput.fill("Aaaaaaaaaaaaaaaaaaaaa")
             await nameInput.blur()
 
-            const inputNameTip1 = page.locator('.invalid-feedback > :nth-child(1)')
-            await expect(inputNameTip1).toContainText('Name has to be from 2 to 20 characters long')
+            const inputNameTip = page.getByText('Name has to be from 2 to 20')
+            await expect(inputNameTip).toContainText('Name has to be from 2 to 20 characters long')
             await expect(nameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
     })
@@ -129,7 +133,7 @@ test.describe("Home work locators", () => {
             await expect(inputLastNameTip).toContainText('Last name required')
             await expect(lastNameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -144,7 +148,7 @@ test.describe("Home work locators", () => {
             await expect(inputLastNameTip).toContainText('Last name is invalid')
             await expect(lastNameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -159,7 +163,7 @@ test.describe("Home work locators", () => {
             await expect(inputLastNameTip).toContainText('Last name is invalid')
             await expect(lastNameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -174,7 +178,7 @@ test.describe("Home work locators", () => {
             await expect(inputLastNameTip).toContainText('Last name has to be from 2 to 20 characters long')
             await expect(lastNameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -189,7 +193,7 @@ test.describe("Home work locators", () => {
             await expect(lastNameInputNameTip).toContainText('Last name has to be from 2 to 20 characters long')
             await expect(lastNameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -200,7 +204,7 @@ test.describe("Home work locators", () => {
             await lastNameInput.fill("Aa")
             await lastNameInput.blur()
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -211,7 +215,7 @@ test.describe("Home work locators", () => {
             await lastNameInput.fill("Aaaaaaaaaaaaaaaaaaaa")
             await lastNameInput.blur()
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
     })
@@ -224,7 +228,7 @@ test.describe("Home work locators", () => {
             await emailInput.fill("olga.gubkina+5@gmail.com")
             await emailInput.blur()
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -239,7 +243,7 @@ test.describe("Home work locators", () => {
             await expect(emailInputTip).toContainText('Email required')
             await expect(emailInputTip).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -254,7 +258,7 @@ test.describe("Home work locators", () => {
             await expect(emailInputTip).toContainText('Email is incorrect')
             await expect(emailInputTip).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
     })
@@ -267,7 +271,7 @@ test.describe("Home work locators", () => {
             await PasswordInput.fill("12345678oA")
             await PasswordInput.blur()
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -282,7 +286,7 @@ test.describe("Home work locators", () => {
             await expect(PasswordInputTip).toContainText('Password required')
             await expect(PasswordInputTip).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -297,7 +301,7 @@ test.describe("Home work locators", () => {
             await expect(PasswordInputTip).toContainText('Password has to be from 8 to 15 characters long and contain at least one integer, one capital, and one small letter')
             await expect(PasswordInputTip).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -312,7 +316,7 @@ test.describe("Home work locators", () => {
             await expect(PasswordInputTip).toContainText('Password has to be from 8 to 15 characters long and contain at least one integer, one capital, and one small letter')
             await expect(PasswordInputTip).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
     })
@@ -327,7 +331,7 @@ test.describe("Home work locators", () => {
             await RepeatPasswordInput.fill("12345678oA")
             await PasswordInput.blur()
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -344,7 +348,7 @@ test.describe("Home work locators", () => {
             await expect(RePasswordInputTip).toContainText('Passwords do not match')
             await expect(RePasswordInputTip).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
 
@@ -359,7 +363,7 @@ test.describe("Home work locators", () => {
             await expect(RePasswordInputTip).toContainText('Re-enter password required')
             await expect(RePasswordInputTip).toHaveCSS('border-color', 'rgb(220, 53, 69)')
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeDisabled()
         })
     })
@@ -377,11 +381,11 @@ test.describe("Home work locators", () => {
             // Fill the form
             await nameInput.fill("Olga")
             await lastNameInput.fill("Gubkina")
-            await emailInput.fill("olga.gubkina+5@gmail.com")
+            await emailInput.fill("olga.gubkina+aqa@gmail.com")
             await passwordInput.fill("aA123456789")
             await repeatPasswordInput.fill("aA123456789")
 
-            const registerBtn = page.locator(".modal-footer > .btn")
+            const registerBtn = page.getByRole('button', {name: 'Register'})
             await expect(registerBtn).toBeEnabled()
             //клик, проверка запроса на 201, проверка БД на новую запись
         })
