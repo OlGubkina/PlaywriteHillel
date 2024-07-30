@@ -20,8 +20,7 @@ const config = defineConfig({
   forbidOnly: !!process.env.CI, //не пропускает тесты с .only на pipeline, локально разрешено
   //forbidOnly: true //запрещает использовать .only
 
-  retries: 1, // локально
-  //retries: process.env.CI ? 1 : 0,
+  retries: 0,
 
   workers: 3, // локально
 
