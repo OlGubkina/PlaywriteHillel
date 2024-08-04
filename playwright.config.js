@@ -41,13 +41,9 @@ const config = defineConfig({
       height: 920,
     },
 
-    // Для репортинга:
-    trace: "on", // шаги, запросы, хуки - на этапе дебага ON
+    trace: "retain-on-failure",
     video: "on",
-    screenshot: "on"
-
-    //trace: 'retain-on-failure',
-    //screenshot: 'only-on-failure'
+    screenshot: "only-on-failure"
   },
 
   projects: [ // = Browsers
