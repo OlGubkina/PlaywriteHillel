@@ -1,58 +1,47 @@
 import { defineConfig, devices } from '@playwright/test' //ES module
+import dotenv from 'dotenv'
+
+dotenv.config({
+  path: './.env'
+  //path: process.env.ENV === 'dev' ? './env/.env.dev' : './env/.env.stage'
+})
 
 const config = defineConfig({
-  testDir: './tests', // Default
-  // Или
-  //testMatch: '/tests/**/*.spec.js',
-  //testIgnore: '/tests/**/*.skip.spec.js',
-
-  //globalSetup: './global.setup.js',
-  // выполняется один раз перед всеми тестами
-  // (!) Не отобр в репортах
-
-  //globalTeardown: './global.teardown.js',
-  // выполнится один раз после всех тестов
-
+  testDir: './tests',
   fullyParallel: false,
-  // true -> несколько воркеров выполняют один тестовый файл
-  // false -> 1 worker - 1 testfile
-
-  forbidOnly: !!process.env.CI, //не пропускает тесты с .only на pipeline, локально разрешено
-  //forbidOnly: true //запрещает использовать .only
-
+  forbidOnly: !!process.env.CI,
   retries: 0,
-
-  workers: 3, // локально
-
+  workers: 3,
   reporter: 'html',
-
   use: {
-    //headless: true, // for pipeline
-    headless: false,  // for debug - open in Browser
+    headless: false,
 
-    baseURL: 'https://qauto.forstudy.space/',
+    baseURL: process.env.BASE_URL, // значения из .env
     httpCredentials: {
-      username: 'guest',
-      password: 'welcome2qauto',
+      username: process.env.HTTP_CREDENTIALS_USERNAME, // значения из .env
+      password: process.env.HTTP_CREDENTIALS_PASSWORD, // значения из .env
     },
 
     viewport: {
       width: 1280,
       height: 920,
     },
-
     trace: "retain-on-failure",
     video: "on",
     screenshot: "only-on-failure"
   },
 
-  projects: [ // = Browsers
+  projects: [
     {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
       },
     },
+  ],
+});
+
+
 
 
     // {
@@ -94,7 +83,5 @@ const config = defineConfig({
     //   baseURL: 'https://qauto2.forstudy.space/',
     // },
 
-  ],
-});
 
 export default config
