@@ -4,7 +4,7 @@ import WelcomePage from "../../src/pageObjects/welcomePage/WelcomePage.js";
 import {USER1_STORAGE_STATE_PATH} from "../../src/data/constants.js";
 
 
-setup(`Login as ${USERS.USER1.email} and save state`, async ({page})=>{
+setup(`Login and save state`, async ({page})=>{
     const welcomePage = new WelcomePage(page)
     await welcomePage.navigate()
     const signInPopup = await welcomePage.header.clickSignInButton()

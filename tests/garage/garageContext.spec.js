@@ -1,5 +1,5 @@
-import {expect, test} from "@playwright/test";
 import GaragePage from "../../src/pageObjects/welcomePage/garagePage/GaragePage.js";
+import {expect, test} from "@playwright/test";
 import {USER1_STORAGE_STATE_PATH} from "../../src/data/constants.js";
 
 
