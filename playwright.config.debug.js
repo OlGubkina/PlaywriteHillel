@@ -33,6 +33,11 @@ const config = defineConfig({
 
   projects: [
     {
+      name: "setup:stage",
+      testMatch: "tests/setup/**/*.setup.js"
+    },
+
+    {
       name: 'chromium',
       dependencies: ['setup:stage'],
       use: {
@@ -40,14 +45,6 @@ const config = defineConfig({
 
       },
     },
-
-    {
-       name: "setup:stage",
-       testMatch: "tests/setup/**/*.setup.js"
-    },
-
-
-
   ],
 });
 
