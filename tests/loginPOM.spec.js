@@ -10,7 +10,7 @@ test.describe('Login POM', () => {
         signInPopup = await welcomePage.header.clickSignInButton()
     })
 
-    test.only('POM: Empty email', async({page})=>{
+    test('POM: Empty email', async({page})=>{
         await signInPopup.emailInput.focus()
         await signInPopup.emailInput.blur()
 
