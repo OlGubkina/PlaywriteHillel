@@ -15,7 +15,11 @@ test.describe('Garage', ()=> {
         await garagePage.navigate()
     })
 
-    test('should be able to open G page', async({page})=>{
+    test('should be able to open G page: button visible', async({page})=>{
         await expect(garagePage.addCarButton).toBeVisible()
+    })
+
+    test('should be able to open G page: button enabled', async({page})=>{
+        await expect(garagePage.addCarButton).toBeEnabled()
     })
 })
