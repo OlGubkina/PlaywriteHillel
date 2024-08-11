@@ -6,7 +6,8 @@
     "test": "npx playwright test",
     "comment": "Start TCs using UI:",
     "test:ui": "npx playwright test --ui",
-    "report": "npx playwright show-report"
+    "report": "npx playwright show-report",
+    "loca:debug": "npx playwright test --config=./playwright.config.debug.js"
   },
   "type": "module",
   "keywords": [],
