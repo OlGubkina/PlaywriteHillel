@@ -26,7 +26,7 @@ const config = defineConfig({
       width: 1280,
       height: 920,
     },
-    trace: "retain-on-failure",
+    trace: "on", //"retain-on-failure",
     video: "on",
     screenshot: "only-on-failure"
   },
