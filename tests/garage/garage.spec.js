@@ -21,6 +21,10 @@ test.describe('Garage', ()=> {
     })
 
     test('should be able to open G page', async({page})=>{
+        test.info().annotations.push({
+            type:'Known issue',
+            description:'jira-ticket link'
+        })
         await expect(garagePage.addCarButton).toBeVisible()
     })
 })
